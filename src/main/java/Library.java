@@ -1,8 +1,6 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.regex.Pattern;
-import java.util.stream.Collectors;
 
 public class Library {
 
@@ -31,14 +29,9 @@ public class Library {
    * @return Book 本
    */
   public Book searchTitle(String title) {
-    Book targetBook = null;
-    Optional<Book> book = bookList.stream()
-        .filter(v -> v.getTitle().equals(title))
-        .findFirst();
-    if(book.isPresent()){
-      targetBook =  (Book) book.get();
-    }
-    return  targetBook;
+
+    Optional<Book> book = bookList.stream().filter(v -> v.getTitle().equals(title)).findFirst();
+    return book.orElse(null);
 
   }
 
@@ -66,12 +59,9 @@ public class Library {
    * @return Book 本
    */
   public Book searchAuthor(String author) {
-    Book targetBook = null;
+
     Optional<Book> book = bookList.stream().filter(v -> v.getAuthor().equals(author)).findFirst();
-    if(book.isPresent()){
-      targetBook =  (Book) book.get();
-    }
-    return  targetBook;
+    return book.orElse(null);
   }
 
   /**
@@ -81,12 +71,10 @@ public class Library {
    * @return Book 本
    */
   public Book searchNumber(int number) {
-    Book targetBook = null;
+
     Optional<Book> book = bookList.stream().filter(v -> v.getNumber() == number).findFirst();
-    if(book.isPresent()){
-      targetBook =  (Book) book.get();
-    }
-    return  targetBook;
+    return book.orElse(null);
+
   }
 
   //getter,setter

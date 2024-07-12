@@ -1,3 +1,6 @@
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 import java.util.Scanner;
 
@@ -21,6 +24,7 @@ public class Exercise12 {
     System.out.println("1: タイトル検索　2: 著者検索　3: 番号検索");
     System.out.print("検索する番号を選んでください : ");
     int input = Integer.parseInt(scanner.nextLine());
+
     // 入力値によってタイトルを変更させる
     Book serchBook = null;
     switch (input) {
@@ -42,7 +46,7 @@ public class Exercise12 {
 
       if (serchBook != null) {
         //検索結果が存在した場合
-        System.out.println("検索結果です。");
+        System.out.println(serchBook.getTitle() + " の本が見つかりました");
         serchBook.displayInfo();
       } else {
         //存在しない場合は例外にする
@@ -50,9 +54,15 @@ public class Exercise12 {
       }
 
     } catch (BusinessException e) {
-      e.getStackTrace();
       System.out.println(e.getMessage());
-      System.out.println(e.getStackTrace());
+      //エラーをログに記入
+      Path path = Path.of("log.txt");
+      try {
+        Files.writeString(path,e.getMessage());
+      } catch (IOException ex) {
+        e.printStackTrace();
+      }
+
     }
   }
 }

@@ -1,8 +1,8 @@
 public class Book {
 
-  private String title;
-  private String author;
-  private int number;
+  private String title;  //タイトル
+  private String author; //著者
+  private int number;    //番号
 
   /**
    * デフォルトコンストラクタ
