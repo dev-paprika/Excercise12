@@ -13,7 +13,6 @@ public class Exercise12 {
         new Book("ドラえもん", "藤子不二雄", 1),
         new Book("吾輩は猫である", "夏目漱石", 2),
         new Book("若草物語", "アンネ・フランク", 3)
-
     );
     //書籍リストをもつ図書館オブジェクトを生成
     Library library = new Library(bookList);
@@ -26,28 +25,29 @@ public class Exercise12 {
     int input = Integer.parseInt(scanner.nextLine());
 
     // 入力値によってタイトルを変更させる
-    Book serchBook = null;
+    Book searchBook = null;
+
     switch (input) {
       case 1 -> {
         System.out.print("お探しのタイトルを入力してください : ");
-        serchBook = library.searchTitle(scanner.nextLine());
+        searchBook = library.searchTitle(scanner.nextLine());
       }
       case 2 -> {
         System.out.print("お探しの著者を入力してください : ");
-        serchBook = library.searchAuthor(scanner.nextLine());
+        searchBook = library.searchAuthor(scanner.nextLine());
       }
       case 3 -> {
         System.out.print("お探しの番号を入力してください : ");
-        serchBook = library.searchNumber(scanner.nextInt());
+        searchBook = library.searchNumber(scanner.nextInt());
       }
     }
     System.out.println();
     try {
 
-      if (serchBook != null) {
+      if (searchBook != null) {
         //検索結果が存在した場合
-        System.out.println(serchBook.getTitle() + " の本が見つかりました");
-        serchBook.displayInfo();
+        System.out.println(searchBook.getTitle() + " の本が見つかりました");
+        searchBook.displayInfo();
       } else {
         //存在しない場合は例外にする
         throw new BusinessException("検索した本はありませんでした。");
