@@ -58,7 +58,7 @@ public class Exercise12 {
       //エラーをログに記入
       Path path = Path.of("log.txt");
       try {
-        Files.writeString(path,e.getMessage());
+        Files.writeString(path, e.getMessage());
       } catch (IOException ex) {
         e.printStackTrace();
       }
